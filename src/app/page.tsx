@@ -2,64 +2,54 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="relative min-h-screen flex flex-col items-center justify-center p-8 bg-neutral-950 text-white overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px] -z-10 animate-pulse delay-700" />
+
+      {/* Hero Section */}
+      <div className="max-w-4xl w-full text-center space-y-8 z-10">
+        <div className="inline-block px-4 py-1.5 mb-2 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full backdrop-blur-md animate-fade-in">
+          Next.js Test Project Ready
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          Create, Build, and <span className="text-blue-500">Innovate</span>
+        </h1>
+        
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          A premium Next.js template initialized by Antigravity. Built with speed, aesthetic perfection, and modern best practices.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <button className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            Explore Documentation
+          </button>
+          <button className="px-8 py-4 bg-neutral-900 text-white font-semibold rounded-xl border border-neutral-800 hover:bg-neutral-800 transition-all transform hover:scale-105 active:scale-95 backdrop-blur-sm">
+            View Source Code
+          </button>
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Feature Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-24 max-w-5xl w-full z-10">
+        {[
+          { title: "App Router", desc: "Native support for React Server Components.", icon: "🚀" },
+          { title: "Tailwind CSS", desc: "Utility-first styling with modern aesthetics.", icon: "🎨" },
+          { title: "TypeScript", desc: "Type-safe development for enterprise scale.", icon: "🛡️" }
+        ].map((feature, i) => (
+          <div key={i} className="p-8 rounded-2xl bg-neutral-900/50 border border-neutral-800/50 backdrop-blur-xl hover:border-blue-500/30 transition-all group">
+            <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{feature.icon}</div>
+            <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+            <p className="text-gray-400">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-24 text-gray-500 text-sm font-medium">
+        &copy; {new Date().getFullYear()} Next.js Test App • Built with ❤️ by Antigravity
+      </footer>
+    </main>
   );
 }
